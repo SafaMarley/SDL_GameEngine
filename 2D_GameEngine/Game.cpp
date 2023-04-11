@@ -1,5 +1,10 @@
 #include "Game.h"
 
+SDL_Texture *playerTexture;
+SDL_Rect srcR;
+SDL_Rect destR;
+
+
 Game::Game()
 {
 	
@@ -12,6 +17,8 @@ Game::~Game()
 void Game::init(const char* title, int xpos, int ypos, int width, int height, bool fullScreen)
 {
 	int flags = 0;
+	destR.h = 64;
+	destR.w = 64;
 	if (fullScreen)
 	{
 		flags = SDL_WINDOW_FULLSCREEN;
@@ -40,6 +47,11 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 	{
 		isRunning = false;
 	}
+
+	SDL_Surface *tempSurface = IMG_Load("assets/Mage.png");
+	playerTexture = SDL_CreateTextureFromSurface(renderer, tempSurface);
+	SDL_FreeSurface(tempSurface);
+
 }
 
 void Game::handleEvents()
@@ -59,12 +71,14 @@ void Game::handleEvents()
 
 void Game::update()
 {
+	
 
 }
 
 void Game::render()
 {
 	SDL_RenderClear(renderer);
+	SDL_RenderCopy(renderer, playerTexture, NULL, &destR);
 	SDL_RenderPresent(renderer);
 }
 
