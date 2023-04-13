@@ -1,9 +1,14 @@
 #include "Game.h"
+#include "TextureManager.h"
+#include "GameObject.h"
+#include "Map.h"
 
-SDL_Texture *playerTexture;
-SDL_Rect srcR;
-SDL_Rect destR;
+GameObject *player;
+GameObject *enemy;
 
+Map* map;
+
+SDL_Renderer* Game::renderer = nullptr;
 
 Game::Game()
 {
@@ -17,8 +22,7 @@ Game::~Game()
 void Game::init(const char* title, int xpos, int ypos, int width, int height, bool fullScreen)
 {
 	int flags = 0;
-	destR.h = 64;
-	destR.w = 64;
+
 	if (fullScreen)
 	{
 		flags = SDL_WINDOW_FULLSCREEN;
@@ -48,9 +52,9 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 		isRunning = false;
 	}
 
-	SDL_Surface *tempSurface = IMG_Load("assets/Mage.png");
-	playerTexture = SDL_CreateTextureFromSurface(renderer, tempSurface);
-	SDL_FreeSurface(tempSurface);
+	player = new GameObject("assets/mage.png", 0, 0);
+	enemy = new GameObject("assets/witch.png", 50, 50);
+	map = new Map();
 
 }
 
@@ -71,14 +75,16 @@ void Game::handleEvents()
 
 void Game::update()
 {
-	
-
+	player->Update();
+	enemy->Update();
 }
 
 void Game::render()
 {
 	SDL_RenderClear(renderer);
-	SDL_RenderCopy(renderer, playerTexture, NULL, &destR);
+	map->DrawMap();
+	player->Render();
+	enemy->Render();
 	SDL_RenderPresent(renderer);
 }
 
