@@ -10,6 +10,8 @@ Manager manager;
 
 SDL_Renderer* Game::renderer = nullptr;
 
+SDL_Event Game::event;
+
 auto &player(manager.addEntity());
 
 Game::Game()
@@ -59,11 +61,11 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 
 	player.addComponent<TransformComponent>(50, 250);
 	player.addComponent<SpriteComponent>("assets/mage.png");
+	player.addComponent<Controller>();
 }
 
 void Game::handleEvents()
 {
-	SDL_Event event;
 	SDL_PollEvent(&event);
 	switch (event.type)
 	{
@@ -80,8 +82,6 @@ void Game::update()
 {
 	manager.refresh();
 	manager.update();
-	player.getComponent<TransformComponent>().position.Add(Vector2D(1, 1));
-	std::cout << player.getComponent<TransformComponent>().position << std::endl;
 }
 
 void Game::render()
