@@ -1,25 +1,22 @@
 #include "Game.h"
 #include "TextureManager.h"
-#include "GameObject.h"
 #include "Map.h"
-#include "ECS.h"
 #include "Components.h"
+#include "Vector2D.h"
 
-
-GameObject *player;
-GameObject *enemy;
 
 Map* map;
+Manager manager;
 
 SDL_Renderer* Game::renderer = nullptr;
 
-Manager manager;
-auto &newPlayer(manager.addEntity());
+auto &player(manager.addEntity());
 
 Game::Game()
 {
 	
 }
+
 Game::~Game()
 {
 
@@ -58,12 +55,10 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 		isRunning = false;
 	}
 
-	player = new GameObject("assets/mage.png", 0, 0);
-	enemy = new GameObject("assets/witch.png", 50, 50);
 	map = new Map();
 
-	newPlayer.addComponent<PositionComponent>();
-	newPlayer.getComponent<PositionComponent>().setPos(500, 500);
+	player.addComponent<TransformComponent>(50, 250);
+	player.addComponent<SpriteComponent>("assets/mage.png");
 }
 
 void Game::handleEvents()
@@ -83,18 +78,17 @@ void Game::handleEvents()
 
 void Game::update()
 {
-	player->Update();
-	enemy->Update();
+	manager.refresh();
 	manager.update();
-	std::cout << newPlayer.getComponent<PositionComponent>().x() << ", " << newPlayer.getComponent<PositionComponent>().y() << std::endl;
+	player.getComponent<TransformComponent>().position.Add(Vector2D(1, 1));
+	std::cout << player.getComponent<TransformComponent>().position << std::endl;
 }
 
 void Game::render()
 {
 	SDL_RenderClear(renderer);
 	map->DrawMap();
-	player->Render();
-	enemy->Render();
+	manager.draw();
 	SDL_RenderPresent(renderer);
 }
 

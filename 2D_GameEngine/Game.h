@@ -5,6 +5,11 @@
 
 class Game
 {
+
+private:
+	bool isRunning;
+	SDL_Window *window;
+
 public:
 	Game();
 	~Game();
@@ -19,9 +24,5 @@ public:
 	bool running() { return isRunning; }
 
 	static SDL_Renderer *renderer;
-
-private:
-	bool isRunning;
-	SDL_Window *window;
 };
 
