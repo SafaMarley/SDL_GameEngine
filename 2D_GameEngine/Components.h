@@ -3,4 +3,4 @@
 #include "TransformComponent.h"
 #include "SpriteComponent.h"
 #include "Controller.h"
-
+#include "ColliderComponent.h"

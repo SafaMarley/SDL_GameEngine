@@ -43,6 +43,12 @@ public:
 
 class Entity
 {
+private:
+	bool active = true;
+	std::vector<std::unique_ptr<Component>> components;
+
+	ComponentArray componentArray;
+	ComponentBitSet componentBitSet;
 
 public:
 	void update()
@@ -60,7 +66,7 @@ public:
 
 	template <typename T> bool hasComponent() const
 	{
-		return ComponentBitSet[getComponentTypeID<T>];
+		return componentBitSet[getComponentTypeID<T>()];
 	}
 
 	template <typename T, typename... TArgs>
@@ -85,12 +91,6 @@ public:
 	}
 	
 
-private:
-	bool active = true;
-	std::vector<std::unique_ptr<Component>> components;
-
-	ComponentArray componentArray;
-	ComponentBitSet componentBitSet;
 
 };
 
