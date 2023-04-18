@@ -72,7 +72,7 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 	Map::LoadMap("assets/level_1.map", 16, 16);
 
 	player.addComponent<TransformComponent>(50, 250);
-	player.addComponent<SpriteComponent>("assets/mageIdle.png", 6, 100);
+	player.addComponent<SpriteComponent>("assets/mageAnimSet.png", true);
 	player.addComponent<Controller>();
 	player.addComponent<ColliderComponent>("player");
 	player.addGroup(groupPlayers);
