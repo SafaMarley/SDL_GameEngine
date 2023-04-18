@@ -1,5 +1,5 @@
 #include "Map.h"
-#include "Game.h"
+#include "../../game/Game.h"
 #include <fstream>
 
 
