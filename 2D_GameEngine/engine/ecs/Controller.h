@@ -1,5 +1,5 @@
 #pragma once
-#include "Game.h"
+#include "../../game/Game.h"
 #include "ECS.h"
 #include "Components.h"
 
@@ -25,7 +25,6 @@ public:
 			case SDLK_UP:
 				transform->velocity.y = -1;
 				sprite->Play("Walk");
-				sprite->spriteFlip = SDL_FLIP_NONE;
 				break;
 			case SDLK_a:
 			case SDLK_LEFT:
@@ -37,7 +36,6 @@ public:
 			case SDLK_DOWN:
 				transform->velocity.y = 1;
 				sprite->Play("Walk");
-				sprite->spriteFlip = SDL_FLIP_HORIZONTAL;
 				break;
 			case SDLK_d:
 			case SDLK_RIGHT:

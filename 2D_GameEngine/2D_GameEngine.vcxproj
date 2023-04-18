@@ -150,30 +150,30 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Collision.cpp" />
-    <ClCompile Include="ECS.cpp" />
-    <ClCompile Include="Game.cpp" />
-    <ClCompile Include="GameObject.cpp" />
+    <ClCompile Include="engine\ecs\Collision.cpp" />
+    <ClCompile Include="engine\ecs\ECS.cpp" />
+    <ClCompile Include="game\Game.cpp" />
+    <ClCompile Include="engine\src\GameObject.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Map.cpp" />
-    <ClCompile Include="TextureManager.cpp" />
-    <ClCompile Include="Vector2D.cpp" />
+    <ClCompile Include="engine\src\Map.cpp" />
+    <ClCompile Include="engine\src\TextureManager.cpp" />
+    <ClCompile Include="engine\ecs\Vector2D.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Animation.h" />
-    <ClInclude Include="ColliderComponent.h" />
-    <ClInclude Include="Collision.h" />
-    <ClInclude Include="Components.h" />
-    <ClInclude Include="Controller.h" />
-    <ClInclude Include="ECS.h" />
-    <ClInclude Include="Game.h" />
-    <ClInclude Include="GameObject.h" />
-    <ClInclude Include="Map.h" />
-    <ClInclude Include="TileComponent.h" />
-    <ClInclude Include="TransformComponent.h" />
-    <ClInclude Include="SpriteComponent.h" />
-    <ClInclude Include="TextureManager.h" />
-    <ClInclude Include="Vector2D.h" />
+    <ClInclude Include="engine\src\Animation.h" />
+    <ClInclude Include="engine\ecs\ColliderComponent.h" />
+    <ClInclude Include="engine\ecs\Collision.h" />
+    <ClInclude Include="engine\ecs\Components.h" />
+    <ClInclude Include="engine\ecs\Controller.h" />
+    <ClInclude Include="engine\ecs\ECS.h" />
+    <ClInclude Include="game\Game.h" />
+    <ClInclude Include="engine\src\GameObject.h" />
+    <ClInclude Include="engine\src\Map.h" />
+    <ClInclude Include="engine\ecs\TileComponent.h" />
+    <ClInclude Include="engine\ecs\TransformComponent.h" />
+    <ClInclude Include="engine\ecs\SpriteComponent.h" />
+    <ClInclude Include="engine\src\TextureManager.h" />
+    <ClInclude Include="engine\ecs\Vector2D.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,8 +1,8 @@
 #pragma once
 #include "Components.h"
 #include "SDL.h"
-#include "TextureManager.h"
-#include "Animation.h"
+#include "../src/TextureManager.h"
+#include "../src/Animation.h"
 #include <map>
 
 

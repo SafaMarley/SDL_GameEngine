@@ -1,9 +1,9 @@
 #include "Game.h"
-#include "TextureManager.h"
-#include "Map.h"
-#include "Components.h"
-#include "Vector2D.h"
-#include "Collision.h"
+#include "../engine/src/TextureManager.h"
+#include "../engine/src/Map.h"
+#include "../engine/ecs/Components.h"
+#include "../engine/ecs/Vector2D.h"
+#include "../engine/ecs/Collision.h"
 
 Map* map;
 Manager manager;
