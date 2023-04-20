@@ -26,7 +26,7 @@ public:
 
 	bool running() { return isRunning; }
 
-	static void AddTile(int id, int x, int y);
+	static void AddTile(int srcX,int srcY, int srcW, int srcH, int xPos, int yPos);
 	static SDL_Renderer *renderer;
 	static SDL_Event event;
 	static std::vector<ColliderComponent*> colliders;

@@ -5,6 +5,9 @@
 #include "../engine/ecs/Vector2D.h"
 #include "../engine/ecs/Collision.h"
 
+const int mapW = 25;
+const int mapH = 20;
+
 Map* map;
 Manager manager;
 
@@ -15,7 +18,9 @@ SDL_Event Game::event;
 std::vector<ColliderComponent*> Game::colliders;
 
 auto& player(manager.addEntity());
-auto& wall(manager.addEntity());
+//auto& wall(manager.addEntity());
+
+const char *mapFile = "assets/mapTileset.png";
 
 enum groupLabels : std::size_t
 {
@@ -69,7 +74,7 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 	}
 
 	map = new Map();
-	Map::LoadMap("assets/level_1.map", 16, 16);
+	Map::LoadMap("assets/level_1.map", mapW, mapH);
 
 	player.addComponent<TransformComponent>(50, 250);
 	player.addComponent<SpriteComponent>("assets/mageAnimSet.png", true);
@@ -77,11 +82,12 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 	player.addComponent<ColliderComponent>("player");
 	player.addGroup(groupPlayers);
 
+	/*
 	wall.addComponent<TransformComponent>(300, 300, 300, 20, 1);
 	wall.addComponent<SpriteComponent>("assets/water.png");
 	wall.addComponent<ColliderComponent>("wall");
 	wall.addGroup(groupMap);
-
+	*/
 }
 
 void Game::handleEvents()
@@ -145,9 +151,9 @@ void Game::clean()
 	std::cout << "Game Cleansed!" << std::endl;
 }
 
-void Game::AddTile(int id, int x, int y)
+void Game::AddTile(int srcX, int srcY, int srcW, int srcH, int xPos, int yPos)
 {
 	auto& tile(manager.addEntity());
-	tile.addComponent<TileComponent>(x, y, 32, 32, id);
+	tile.addComponent<TileComponent>(srcX, srcY, srcW, srcH, xPos, yPos, mapFile);
 	tile.addGroup(groupMap);
 }
