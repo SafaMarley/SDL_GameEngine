@@ -1,21 +1,21 @@
 #include "game/Game.h"
+#include "main.h"
 
 Game *game = nullptr;
 
 int main(int argc, char *argv[])
 {
 
-	const int FPS = 60;
-	const int frameDelay = 1000 / FPS;
+	const int frameDelay = 1000 / Main::FPS;
 
 	Uint32 frameStart;
 	int frameTime;
 
 	game = new Game();
 
-	game->init("SomehowGameEngine", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 640, false);
+	game->init("SomehowGameEngine", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, Main::windowW, Main::windowH, Main::fullscreen);
 
-	while (game->running())
+	while (game->isRunning)
 	{
 		frameStart = SDL_GetTicks();
 

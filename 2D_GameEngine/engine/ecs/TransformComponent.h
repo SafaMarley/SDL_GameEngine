@@ -1,12 +1,16 @@
 #pragma once
 #include "Components.h"
 #include "Vector2D.h"
+#include "../../main.h"
 
 class TransformComponent : public Component
 {
 public:
 	Vector2D position;
 	Vector2D velocity;
+
+	int middleX = Main::windowW / 2;
+	int middleY = Main::windowH / 2;
 
 	int height = 64;
 	int width = 64;
@@ -16,12 +20,16 @@ public:
 
 	TransformComponent()
 	{
-		position.Zero();
+		//position.Zero();
+		position.x = middleX;
+		position.y = middleY;
 	}
 
 	TransformComponent(int s)
 	{
-		position.Zero();
+		//position.Zero();
+		position.x = middleX;
+		position.y = middleY;
 		scale = s;
 	}
 
@@ -47,7 +55,10 @@ public:
 	
 	void update() override
 	{
+		//Update map's position instead of player's to keep player in the middle of the screen.
+		/*
 		position.x += velocity.x * speed;
 		position.y += velocity.y * speed;
+		*/
 	}
 };

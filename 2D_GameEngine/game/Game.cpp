@@ -17,6 +17,8 @@ SDL_Event Game::event;
 
 std::vector<ColliderComponent*> Game::colliders;
 
+bool Game::isRunning = false;
+
 auto& player(manager.addEntity());
 //auto& wall(manager.addEntity());
 
@@ -29,6 +31,10 @@ enum groupLabels : std::size_t
 	groupEnemies,
 	groupColliders
 };
+
+auto& tiles(manager.getGroup(groupMap));
+auto& players(manager.getGroup(groupPlayers));
+auto& enemies(manager.getGroup(groupEnemies));
 
 Game::Game()
 {
@@ -76,7 +82,7 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 	map = new Map();
 	Map::LoadMap("assets/level_1.map", mapW, mapH);
 
-	player.addComponent<TransformComponent>(50, 250);
+	player.addComponent<TransformComponent>();
 	player.addComponent<SpriteComponent>("assets/mageAnimSet.png", true);
 	player.addComponent<Controller>();
 	player.addComponent<ColliderComponent>("player");
@@ -109,6 +115,17 @@ void Game::update()
 	manager.refresh();
 	manager.update();
 
+	TransformComponent *transformRef = &player.getComponent<TransformComponent>();
+
+	Vector2D pVelocity = transformRef->velocity;
+	int pSpeed = transformRef->speed;
+	
+	for (auto t : tiles)
+	{
+		t->getComponent<TileComponent>().destRect.x -= pVelocity.x * pSpeed;
+		t->getComponent<TileComponent>().destRect.y -= pVelocity.y * pSpeed;
+	}
+	/*
 	for (auto cc : colliders)
 	{
 		if (cc == &player.getComponent<ColliderComponent>())
@@ -117,11 +134,8 @@ void Game::update()
 		}
 		Collision::AABB(player.getComponent<ColliderComponent>(), *cc);
 	}
+	*/
 }
-
-auto& tiles(manager.getGroup(groupMap));
-auto& players(manager.getGroup(groupPlayers));
-auto& enemies(manager.getGroup(groupEnemies));
 
 void Game::render()
 {
