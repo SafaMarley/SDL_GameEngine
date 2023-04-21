@@ -55,10 +55,7 @@ public:
 	
 	void update() override
 	{
-		//Update map's position instead of player's to keep player in the middle of the screen.
-		/*
 		position.x += velocity.x * speed;
 		position.y += velocity.y * speed;
-		*/
 	}
 };

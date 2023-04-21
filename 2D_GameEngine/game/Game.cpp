@@ -4,6 +4,7 @@
 #include "../engine/ecs/Components.h"
 #include "../engine/ecs/Vector2D.h"
 #include "../engine/ecs/Collision.h"
+#include "../main.h"
 
 const int mapW = 25;
 const int mapH = 20;
@@ -14,6 +15,8 @@ Manager manager;
 SDL_Renderer* Game::renderer = nullptr;
 
 SDL_Event Game::event;
+
+SDL_Rect Game::camera = { 0, 0, Main::windowW, Main::windowH };
 
 std::vector<ColliderComponent*> Game::colliders;
 
@@ -115,26 +118,30 @@ void Game::update()
 	manager.refresh();
 	manager.update();
 
-	TransformComponent *transformRef = &player.getComponent<TransformComponent>();
+	camera.x = player.getComponent<TransformComponent>().position.x - Main::windowW / 2;
+	camera.y = player.getComponent<TransformComponent>().position.y - Main::windowH / 2;
 
-	Vector2D pVelocity = transformRef->velocity;
-	int pSpeed = transformRef->speed;
-	
-	for (auto t : tiles)
+	maintainCamera();
+}
+
+void Game::maintainCamera()
+{
+	if (camera.x < 0)
 	{
-		t->getComponent<TileComponent>().destRect.x -= pVelocity.x * pSpeed;
-		t->getComponent<TileComponent>().destRect.y -= pVelocity.y * pSpeed;
+		camera.x = 0;
 	}
-	/*
-	for (auto cc : colliders)
+	if (camera.y < 0)
 	{
-		if (cc == &player.getComponent<ColliderComponent>())
-		{
-			continue;
-		}
-		Collision::AABB(player.getComponent<ColliderComponent>(), *cc);
+		camera.y = 0;
 	}
-	*/
+	if (camera.x > camera.w)
+	{
+		camera.x = camera.w;
+	}
+	if (camera.y > camera.h)
+	{
+		camera.y = camera.h;
+	}
 }
 
 void Game::render()
