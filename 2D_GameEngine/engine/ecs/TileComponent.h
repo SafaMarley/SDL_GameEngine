@@ -13,7 +13,7 @@ public:
 
 	TileComponent() = default;
 
-	TileComponent(int srcX, int srcY, int srcW, int srcH, int xPos, int yPos, const char* path)
+	TileComponent(int srcX, int srcY, int srcW, int srcH, int xPos, int yPos, const char* path, int scale = 1)
 	{
 		texture = TextureManager::LoadTexture(path);
 
@@ -27,8 +27,8 @@ public:
 
 		destRect.x = xPos;
 		destRect.y = yPos;
-		destRect.w = 64;
-		destRect.h = 64;
+		destRect.w = srcW * scale;
+		destRect.h = srcH * scale;
 	}
 
 	~TileComponent()
