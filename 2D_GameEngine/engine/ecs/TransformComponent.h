@@ -1,6 +1,6 @@
 #pragma once
 #include "Components.h"
-#include "Vector2D.h"
+#include "../src/Vector2D.h"
 #include "../../main.h"
 
 class TransformComponent : public Component
@@ -20,14 +20,12 @@ public:
 
 	TransformComponent()
 	{
-		//position.Zero();
 		position.x = middleX;
 		position.y = middleY;
 	}
 
 	TransformComponent(int s)
 	{
-		//position.Zero();
 		position.x = middleX;
 		position.y = middleY;
 		scale = s;

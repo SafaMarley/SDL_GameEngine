@@ -157,7 +157,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="engine\src\Map.cpp" />
     <ClCompile Include="engine\src\TextureManager.cpp" />
-    <ClCompile Include="engine\ecs\Vector2D.cpp" />
+    <ClCompile Include="engine\src\Vector2D.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="engine\src\Animation.h" />
@@ -173,7 +173,7 @@
     <ClInclude Include="engine\ecs\TransformComponent.h" />
     <ClInclude Include="engine\ecs\SpriteComponent.h" />
     <ClInclude Include="engine\src\TextureManager.h" />
-    <ClInclude Include="engine\ecs\Vector2D.h" />
+    <ClInclude Include="engine\src\Vector2D.h" />
     <ClInclude Include="main.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

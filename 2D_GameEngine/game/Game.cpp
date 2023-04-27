@@ -2,7 +2,7 @@
 #include "../engine/src/TextureManager.h"
 #include "../engine/src/Map.h"
 #include "../engine/ecs/Components.h"
-#include "../engine/ecs/Vector2D.h"
+#include "../engine/src/Vector2D.h"
 #include "../engine/ecs/Collision.h"
 #include "../main.h"
 
@@ -21,7 +21,6 @@ SDL_Rect Game::camera = { 0, 0, Main::windowW, Main::windowH };
 bool Game::isRunning = false;
 
 auto& player(manager.addEntity());
-//auto& wall(manager.addEntity());
 
 
 Game::Game()
@@ -83,13 +82,6 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 	player.addGroup(groupPlayers);
 
 	std::cout << "Game is running!" << std::endl;
-
-	/*
-	wall.addComponent<TransformComponent>(300, 300, 300, 20, 1);
-	wall.addComponent<SpriteComponent>("assets/water.png");
-	wall.addComponent<ColliderComponent>("wall");
-	wall.addGroup(groupMap);
-	*/
 }
 
 auto& tiles(manager.getGroup(Game::groupMap));
@@ -160,14 +152,6 @@ void Game::render()
 	for (auto& t : tiles)
 	{
 		t->draw();
-	}
-
-	if (Main::debugMode)
-	{
-		for (auto& c : colliders)
-		{
-			c->draw();
-		}
 	}
 
 	for (auto& p : players)

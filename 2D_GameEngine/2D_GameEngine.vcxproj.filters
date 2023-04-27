@@ -30,7 +30,7 @@
     <ClCompile Include="engine\ecs\ECS.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="engine\ecs\Vector2D.cpp">
+    <ClCompile Include="engine\src\Vector2D.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="engine\ecs\Collision.cpp">
@@ -56,7 +56,7 @@
     <ClInclude Include="engine\ecs\ECS.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="engine\ecs\Vector2D.h">
+    <ClInclude Include="engine\src\Vector2D.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="engine\ecs\ColliderComponent.h">

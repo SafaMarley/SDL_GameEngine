@@ -7,5 +7,4 @@ public:
 	static const int windowW = 800;
 	static const int windowH = 640;
 	static const bool fullscreen = false;
-	static const bool debugMode = false;
 };
