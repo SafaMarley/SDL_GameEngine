@@ -26,7 +26,10 @@ public:
 	friend Vector2D& operator-(Vector2D& v1, const Vector2D& v2);
 	friend Vector2D& operator*(Vector2D& v1, const Vector2D& v2);
 	friend Vector2D& operator/(Vector2D& v1, const Vector2D& v2);
+	friend Vector2D& operator*(Vector2D& v, const float& f);
+	friend Vector2D& operator/(Vector2D& v, const float& f);
 
+	Vector2D& operator=(const Vector2D& vec);
 	Vector2D& operator+=(const Vector2D& vec);
 	Vector2D& operator-=(const Vector2D& vec);
 	Vector2D& operator*=(const Vector2D& vec);

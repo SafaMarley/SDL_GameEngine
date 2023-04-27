@@ -52,9 +52,7 @@ Vector2D& Vector2D::Normalize()
 		return *this;
 	}
 	Vector2D unitVector(this->x, this->y);
-	unitVector.x = this->x / divider;
-	unitVector.y = this->y / divider;
-	return unitVector;
+	return (unitVector / divider);
 }
 
 float Vector2D::Length()
@@ -90,6 +88,24 @@ Vector2D& operator*(Vector2D& v1, const Vector2D& v2)
 Vector2D& operator/(Vector2D& v1, const Vector2D& v2)
 {
 	return v1.Divide(v2);
+}
+
+Vector2D& operator*(Vector2D& v, const float& f)
+{
+	return v = Vector2D(v.x * f, v.y * f);
+}
+
+Vector2D& operator/(Vector2D& v, const float& f)
+{
+	return v = Vector2D(v.x / f, v.y / f);
+}
+
+Vector2D& Vector2D::operator=(const Vector2D& vec)
+{
+	this->x = vec.x;
+	this->y = vec.y;
+
+	return *this;
 }
 
 Vector2D& Vector2D::operator+=(const Vector2D& vec)
