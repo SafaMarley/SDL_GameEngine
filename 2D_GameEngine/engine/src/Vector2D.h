@@ -17,7 +17,10 @@ public:
 	Vector2D& Divide(const Vector2D& vec);
 
 	Vector2D& Normalize();
-	float Magnitude(const Vector2D& vec);
+	float Length();
+	float Magnitude();
+
+	float Distance(Vector2D& v1, const Vector2D& v2);
 
 	friend Vector2D& operator+(Vector2D& v1, const Vector2D& v2);
 	friend Vector2D& operator-(Vector2D& v1, const Vector2D& v2);

@@ -46,7 +46,7 @@ Vector2D& Vector2D::Divide(const Vector2D& vec)
 
 Vector2D& Vector2D::Normalize()
 {
-	float divider = Magnitude(*this);
+	float divider = this->Magnitude();
 	if (fabsf(divider) < FLT_EPSILON)
 	{
 		return *this;
@@ -57,9 +57,19 @@ Vector2D& Vector2D::Normalize()
 	return unitVector;
 }
 
-float Vector2D::Magnitude(const Vector2D& vec)
+float Vector2D::Length()
 {
-	return sqrt(this->x * this->x + this->y * this->y);
+	return (this->x * this->x + this->y * this->y);
+}
+
+float Vector2D::Magnitude()
+{
+	return sqrt(this->Length());
+}
+
+float Vector2D::Distance(Vector2D& v1, const Vector2D& v2)
+{
+	return (v1 - v2).Length();
 }
 
 Vector2D& operator+(Vector2D& v1, const Vector2D& v2)
