@@ -8,7 +8,6 @@ public:
 	~Map();
 
 	void LoadMap(std::string path, int sizeX, int sizeY);
-	void AddTile(int srcX, int srcY, int srcW, int srcH, int xPos, int yPos);
 
 private:
 	const char *mapFilePath;

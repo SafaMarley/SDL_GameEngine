@@ -34,24 +34,16 @@ void Map::LoadMap(std::string path, int sizeX, int sizeY)
 			srcY = atoi(&ch) * srcH;
 			mapFile.get(ch);
 			srcX = atoi(&ch) * srcW;
-
-			AddTile(srcX, srcY, srcW, srcH, x * srcW, y * srcH);
-			mapFile.ignore();
-		}
-	}
-
-	mapFile.ignore();
-
-	for (int y = 0; y < sizeY; y++)
-	{
-		for (int x = 0; x < sizeX; x++)
-		{
 			mapFile.get(ch);
+
+			auto& tile(manager.addEntity());
+			tile.addComponent<TileComponent>(srcX, srcY, srcW, srcH, x * srcW, y * srcH, mapFilePath);
+			tile.addGroup(Game::groupMap);
+			
 			if (ch == '1')
 			{
-				auto& tileCollider(manager.addEntity());
-				tileCollider.addComponent<ColliderComponent>("terrain", x * srcW, y * srcH, srcW, srcH);
-				tileCollider.addGroup(Game::groupColliders);
+				tile.addComponent<ColliderComponent>("terrain", x * srcW, y * srcH, srcW, srcH);
+				tile.addGroup(Game::groupColliders);
 			}
 
 			mapFile.ignore();
@@ -59,11 +51,4 @@ void Map::LoadMap(std::string path, int sizeX, int sizeY)
 	}
 
 	mapFile.close();
-}
-
-void Map::AddTile(int srcX, int srcY, int srcW, int srcH, int xPos, int yPos)
-{
-	auto& tile(manager.addEntity());
-	tile.addComponent<TileComponent>(srcX, srcY, srcW, srcH, xPos, yPos, mapFilePath);
-	tile.addGroup(Game::groupMap);
 }
