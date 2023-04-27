@@ -55,7 +55,8 @@ public:
 	
 	void update() override
 	{
-		position.x += velocity.x * speed;
-		position.y += velocity.y * speed;
+		Vector2D normedV = velocity.Normalize();
+		position.x += normedV.x * speed;
+		position.y += normedV.y * speed;
 	}
 };

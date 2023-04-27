@@ -44,6 +44,24 @@ Vector2D& Vector2D::Divide(const Vector2D& vec)
 	return *this;
 }
 
+Vector2D& Vector2D::Normalize()
+{
+	float divider = Magnitude(*this);
+	if (fabsf(divider) < FLT_EPSILON)
+	{
+		return *this;
+	}
+	Vector2D unitVector(this->x, this->y);
+	unitVector.x = this->x / divider;
+	unitVector.y = this->y / divider;
+	return unitVector;
+}
+
+float Vector2D::Magnitude(const Vector2D& vec)
+{
+	return sqrt(this->x * this->x + this->y * this->y);
+}
+
 Vector2D& operator+(Vector2D& v1, const Vector2D& v2)
 {
 	return v1.Add(v2);
