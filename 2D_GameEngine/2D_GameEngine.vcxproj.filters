@@ -24,7 +24,7 @@
     <ClCompile Include="engine\src\TextureManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="main.cpp">
+    <ClCompile Include="engine\src\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="engine\ecs\ECS.cpp">
@@ -83,7 +83,7 @@
     <ClInclude Include="game\Game.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="main.h">
+    <ClInclude Include="engine\src\main.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

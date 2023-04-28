@@ -4,7 +4,7 @@
 #include "../engine/ecs/Components.h"
 #include "../engine/src/Vector2D.h"
 #include "../engine/ecs/Collision.h"
-#include "../main.h"
+#include "../engine/src/main.h"
 
 const int mapW = 25;
 const int mapH = 20;
