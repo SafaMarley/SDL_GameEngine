@@ -153,7 +153,6 @@
     <ClCompile Include="engine\ecs\Collision.cpp" />
     <ClCompile Include="engine\ecs\ECS.cpp" />
     <ClCompile Include="game\Game.cpp" />
-    <ClCompile Include="engine\src\GameObject.cpp" />
     <ClCompile Include="engine\src\main.cpp" />
     <ClCompile Include="engine\src\Map.cpp" />
     <ClCompile Include="engine\src\TextureManager.cpp" />
@@ -167,7 +166,6 @@
     <ClInclude Include="engine\ecs\Controller.h" />
     <ClInclude Include="engine\ecs\ECS.h" />
     <ClInclude Include="game\Game.h" />
-    <ClInclude Include="engine\src\GameObject.h" />
     <ClInclude Include="engine\src\Map.h" />
     <ClInclude Include="engine\ecs\TileComponent.h" />
     <ClInclude Include="engine\ecs\TransformComponent.h" />

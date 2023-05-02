@@ -43,6 +43,15 @@ public:
 				sprite->Play("Walk");
 				sprite->spriteFlip = SDL_FLIP_NONE;
 				break;
+			case SDLK_1:
+				sprite->setTexture("assets/mageAnimSet.png");
+				break;			
+			case SDLK_2:
+				sprite->setTexture("assets/ninjaAnimSet.png");
+				break;
+			case SDLK_3:
+				sprite->setTexture("assets/witchAnimSet.png");
+				break;
 			default:
 				break;
 			}
